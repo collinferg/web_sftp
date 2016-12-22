@@ -19,21 +19,9 @@ exports.template = function(grunt, init, done) {
 
   init.process({}, [
     // Prompt for these values.
-    {
-      name: 'host',
-      message: 'What is the SFTP Hostname?',
-      default: ''
-    },
-    {
-      name: 'nickname',
-      message: 'What is the host nickname?',
-      default: ''
-    },
-    {
-      name: 'path',
-      message: 'What is the remote filepath you want your files uploaded to?',
-      default: ''
-    }
+    init.prompt('host'),
+    init.prompt('nickname'),
+    init.prompt('path')
     ], function(err, props) {
     props.package_json = 'package.json';
     props.file_name = props.package_json ? '<%= pkg.name %>' : 'FILE_NAME';
