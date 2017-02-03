@@ -66,6 +66,10 @@ module.exports = function(grunt) {
             sass: {
                 files: 'scss/*.scss',
                 tasks: ['sass', 'autoprefixer']
+            },
+            'sftp-deply': {
+                files: ['**/*'],
+                tasks: ['sftp-deploy']
             }
         }
 
