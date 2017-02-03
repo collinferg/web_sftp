@@ -19,15 +19,34 @@ exports.template = function(grunt, init, done) {
 
   init.process({}, [
     // Prompt for these values.
-    init.prompt('host'),
-    init.prompt('nickname'),
-    init.prompt('path')
+    {
+        name: 'host',
+        message: 'hostname for the SFTP server you\'d like to use'
+    },
+    {
+        name: 'nickname',
+        message: 'nickname for the SFTP server you\'d like to use'
+    },
+    {
+        name: 'username',
+        message: 'username for the SFTP server you\'d like to use'
+    },
+    {
+        name: 'password',
+        message: 'password for the SFTP server you\'d like to use'
+    },
+    {
+        name: 'path',
+        message: 'path to directory the project files should be uploaded to'
+    }
     ], function(err, props) {
     props.package_json = 'package.json';
     props.file_name = props.package_json ? '<%= pkg.name %>' : 'FILE_NAME';
-    props.host = /y/i.test(props.host);
-    props.nickname = /y/i.test(props.nickname);
-    props.path = /y/i.test(props.path);
+    props.host = props.host;
+    props.nickname = props.nickname;
+    props.username = props.username;
+    props.password = props.password;
+    props.path = props.path;
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);
