@@ -8,12 +8,12 @@ module.exports = function(grunt) {
         'sftp-deploy': {
             build: {
                 auth: {
-                    host: '{% host %}',
+                    host: '<%= host %>',
                     port: 22,
-                    authKey: '{% nickname %}'
+                    authKey: '<%= nickname %>'
                 },
                 src: '.',
-                dest: '{% path %}',
+                dest: '<%= path %>',
                 exclusions: ['.DS_Store', '.ftppass', 'node_modules']
             }
         },
