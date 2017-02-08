@@ -85,6 +85,6 @@ module.exports = function(grunt) {
 
     // Register Tasks
     grunt.registerTask('default', ['sass', 'sftp-deploy']);
-    grunt.registerTask('production', ['sass', 'cssmin', 'uglify', 'sftp-deploy']);
+    grunt.registerTask('production', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'sftp-deploy']);
 
 };
