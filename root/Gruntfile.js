@@ -5,19 +5,6 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
-        'sftp-deploy': {
-            build: {
-                auth: {
-                    host: '{%= host %}',
-                    port: 22,
-                    authKey: '{%= nickname %}'
-                },
-                src: '.',
-                dest: '{%= path %}',
-                exclusions: ['.DS_Store', '.ftppass', 'node_modules']
-            }
-        },
-
         sass: {
             dist: {
                 options: {
@@ -66,10 +53,6 @@ module.exports = function(grunt) {
             sass: {
                 files: 'scss/*.scss',
                 tasks: ['sass', 'autoprefixer']
-            },
-            'sftp-deply': {
-                files: ['**/*'],
-                tasks: ['sftp-deploy']
             }
         }
 
@@ -81,10 +64,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-sftp-deploy');
 
     // Register Tasks
-    grunt.registerTask('default', ['sass', 'sftp-deploy']);
-    grunt.registerTask('production', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'sftp-deploy']);
+    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('production', ['sass', 'autoprefixer', 'cssmin', 'uglify']);
 
 };
